@@ -14,8 +14,13 @@ collections: # each post type should be entered here under a seperate node. See 
     fields: # The fields for each document, usually in front matter. These can be whatever you want, but need to at least have label, name and widget. Built in widgets can be found here https://www.netlifycms.org/docs/widgets/ or you can make your own
       - {label: "Layout", name: "layout", widget: "hidden", default: "blog"}
       - {label: "Title", name: "title", widget: "string"}
-      - {label: "Answers", name: "answers", widget: "list", allow_add: false, fields: {
-         - {label: "Answer Text", name: "answerText", widget: "string"}
-         - {label: "Answer Imge", name: "answerImage", widget: "image"}
-         - {labe: "Answer Description", name: "answerDescription", widget: "string"}
-      }}
+      - label: "Answers"
+        name: "answers"
+        widget: "list"
+        allow_add: false
+        fields: 
+          - {label: "Answer Text", name: "answerText", widget: "string"}
+          - {label: "Answer Imge", name: "answerImage", widget: "image"}
+          - {label: "Answer Description", name: "answerDescription", widget: "string"}
+
+      
