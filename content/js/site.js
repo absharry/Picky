@@ -100,9 +100,7 @@ function setUpWinningRestaurant(){
                 chosenRestaurant = currentUser.choice2;
             }
 
-            getApiRequest('restaurant' + chosenRestaurant).then(function(data){
-                $('#restaurant').append(`<div>${data.Name}</div>`);
-            });
+            getMenu(chosenRestaurant);
         }); 
     });
 }
@@ -111,9 +109,15 @@ function getApiRequest(endpoint){
     return $.get(`${baseURL}${endpoint}`);
 }
 
-function getMenu(){
-    $.get(`${baseUrl}`, function(data) {
+function getMenu(chosenRestaurant){
+    getApiRequest('restaurant' + chosenRestaurant).then(function(data){
+        var products = '';
 
+        data.Products.forEach(product => {
+            products += `<div class='product ${product.IsVegetarian ? 'vegetarian' : ''}' id='product${product.id}'><h3>${product.Item}</h3> <p class='price'>&pound;${product.Price}</p> <p class='quantity'>${product.Quantity}</p></div>`;
+        });
+
+        $('#restaurant').append(`<div class='chosen-menu'><h1>${data.Name}</h1> <div class='products'>${products}</div><div class='total'>&pound;${data.TotalCost}</div></div>`);
     });
 }
 
