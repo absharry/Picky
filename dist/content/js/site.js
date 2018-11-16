@@ -39,12 +39,12 @@ $(document).ready(function(){
 });
 
 function getRestaurants(){
+    showWaiting();
     getApiRequest('restaurants').then(function(data){
-        $('#waiting').show();
         restaurants = data.Restaurants;
         setUpRestaurants();
         setUpRecommendations();
-        $('#waiting').hide();
+        hideWaiting();
         $('#recommendations').show();
     });
 }
@@ -60,21 +60,27 @@ function setUpRecommendations(){
             restaurantChoices.choice2 = value;
             writeRestaurantData(userId);
             $(this.parentElement).hide();
-
+            showWaiting();
             var otherUserRestaurants = database.ref('users/' + otherUserId + '/restaurants');
 
             otherUserRestaurants.on('value', function(snapshot) {
                 if(snapshot.val()) {
                     setUpWinningRestaurant();
-                    $('#waiting').hide();
-                    $('#restaurant').show();
                 } else{
                     $('#restaurant').hide();
-                    $('#waiting').show();
+                    
                 }
             });
         }
     });
+}
+
+function showWaiting() {
+    $('#waiting').show();
+}
+
+function hideWaiting(){
+    $('#waiting').hide();
 }
 
 function setUpRestaurants(){
@@ -100,7 +106,10 @@ function setUpWinningRestaurant(){
                 chosenRestaurant = currentUser.choice2;
             }
 
-            getMenu(chosenRestaurant);
+            getMenu(chosenRestaurant).then(function(){
+                hideWaiting();
+                $('#restaurant').show();
+            });;
         }); 
     });
 }
@@ -110,14 +119,14 @@ function getApiRequest(endpoint){
 }
 
 function getMenu(chosenRestaurant){
-    getApiRequest('restaurant' + chosenRestaurant).then(function(data){
+    return getApiRequest('restaurant' + chosenRestaurant).then(function(data){
         var products = '';
 
         data.Products.forEach(product => {
             products += `<div class='product ${product.IsVegetarian ? 'vegetarian' : ''}' id='product${product.id}'><h3>${product.Item}</h3> <p class='price'>&pound;${product.Price}</p> <p class='quantity'>${product.Quantity}</p></div>`;
         });
 
-        $('#restaurant').append(`<div class='chosen-menu'><h1>${data.Name}</h1> <div class='products'>${products}</div><div class='total'>&pound;${data.TotalCost}</div></div>`);
+        $('#restaurant').append(`<div class='chosen-menu'><h1>${data.Name}</h1> <div class='products'>${products}</div><div class='total'>&pound;${data.TotalCost}</div></div><button class='btn btn-primary'>Checkout</button>`);
     });
 }
 
