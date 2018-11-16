@@ -17,7 +17,6 @@ collections: # each post type should be entered here under a seperate node. See 
       - label: "Answers"
         name: "answers"
         widget: "list"
-        allow_add: false
         fields: 
           - {label: "Answer Text", name: "answerText", widget: "string"}
           - {label: "Answer Imge", name: "answerImage", widget: "image"}
