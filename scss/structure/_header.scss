@@ -1,15 +1,13 @@
-header {
+.header {
+    text-align: center;
     width: 100%;
     color: $white;
     height: 160px;
 
     img {
-        display: block;
-        float: left;
-        padding-bottom: 10px;
+        display: inline;
+        padding-bottom: 20px;
         padding-top: 10px;
-        height: 160px;
-    }    
+        height: 60px;
+    }
 }
-
-
