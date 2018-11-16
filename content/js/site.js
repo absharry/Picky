@@ -78,10 +78,22 @@ function setUpRecommendations(){
 }
 
 function setUpRestaurants(){
-    restaurants.forEach(restaurant => {
-        $('#recommendations').append('<button class="recommendation" id="recommendation' + restaurant.Id + '" data-value="' + restaurant.Id +'">' +
-                                '   <h2>' + restaurant.Name +'</h2>' +
-                                '</button>');
+  restaurants.forEach(restaurant => {
+    $('#recommendations').append('      <div class="row">'+
+        '<div class="col-12">'+
+            '<div class="card">'+
+                '<div class="container">'+
+                    '<h4><b>' + restaurant.Name + '</b></h4>'+
+                    '<p>' + restaurant.AverageRating + '</p>'+
+                    '<p>' + restaurant.FoodType + '</p>'+
+                    '<p>' + restaurant.Address + '</p>'+
+                    '<p>' + restaurant.Postcode + '</p>'+
+                    '<button type="button" class="btn' +
+    ' btn-success">Select</button>' +
+                '</div>'+
+            '</div>'+
+        '</div>'+
+    '</div>');
     });
 }
 
