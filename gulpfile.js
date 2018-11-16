@@ -96,4 +96,4 @@ gulp.task('compile-html', function() {
   gulp.task('html:watch', gulp.series('copy-admin', 'compile-html', htmlWatch));
   gulp.task('js:watch', gulp.series('compile-js', jsWatch));
   gulp.task('img:watch', gulp.series('compress-images', imgWatch));
-  gulp.task('watch', gulp.parallel('sass:watch', 'html:watch', 'serve', 'img:watch','js:watch', 'livereload'));
+  gulp.task('watch', gulp.parallel('sass:watch', 'html:watch', 'serve', 'img:watch','js:watch'));
