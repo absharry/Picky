@@ -8,8 +8,6 @@ let baseURL = "https://bnqukaif.apiadmin.co.uk/api/";
 var database;
 var restaurants = null;
 
-
-
 $(document).ready(function(){
     // Initialize Firebase
     var config = {
@@ -25,11 +23,33 @@ $(document).ready(function(){
 
     database = firebase.database();
 
-    getApiRequest('restaurants').then(function(data){
-        restaurants = data;
-        $('#recommendations').show();
+    $('#set-user-1').click(function(){
+        userId = 1;
+        otherUserId = 2;
+        getRestaurants();
+        $('#user-set').hide();
     });
 
+    $('#set-user-2').click(function(){
+        userId = 2;
+        otherUserId = 1;
+        getRestaurants();
+        $('#user-set').hide();
+    });
+});
+
+function getRestaurants(){
+    getApiRequest('restaurants').then(function(data){
+        $('#waiting').show();
+        restaurants = data.Restaurants;
+        setUpRestaurants();
+        setUpRecommendations();
+        $('#waiting').hide();
+        $('#recommendations').show();
+    });
+}
+
+function setUpRecommendations(){
     $('.recommendation').click(function(e){
         var value = parseInt(this.dataset.value);
 
@@ -41,38 +61,60 @@ $(document).ready(function(){
             writeRestaurantData(userId);
             $(this.parentElement).hide();
 
-            var starCountRef = database.ref('users/' + otherUserId + '/restaurants');
+            var otherUserRestaurants = database.ref('users/' + otherUserId + '/restaurants');
 
-            starCountRef.on('value', function(snapshot) {
+            otherUserRestaurants.on('value', function(snapshot) {
                 if(snapshot.val()) {
-                    $('#restaurant-waiting').hide();
+                    setUpWinningRestaurant();
+                    $('#waiting').hide();
                     $('#restaurant').show();
                 } else{
                     $('#restaurant').hide();
-                    $('#restaurant-waiting').show();
+                    $('#waiting').show();
                 }
             });
-            
         }
     });
-});
+}
+
+function setUpRestaurants(){
+    restaurants.forEach(restaurant => {
+        $('#recommendations').append('<button class="recommendation" id="recommendation' + restaurant.Id + '" data-value="' + restaurant.Id +'">' +
+                                '   <h2>' + restaurant.Name +'</h2>' +
+                                '</button>');
+    });
+}
+
+function setUpWinningRestaurant(){
+    database.ref('/users/' + userId).once('value').then(function(currentUserSnapshot) {
+        database.ref('/users/' + otherUserId).once('value').then(function(otherUserSnapshot) {
+            var chosenRestaurant;
+            var currentUser = currentUserSnapshot.val().restaurants;
+            var otherUser = otherUserSnapshot.val().restaurants;
+
+            if(currentUser.choice1 === otherUser.choice1) {
+                chosenRestaurant = currentUser.choice1
+            } else if(currentUser.choice1 === otherUser.choice2) {
+                chosenRestaurant = currentUser.choice1;
+            }else {
+                chosenRestaurant = currentUser.choice2;
+            }
+
+            getApiRequest('restaurant' + chosenRestaurant).then(function(data){
+                $('#restaurant').append(`<div>${data.Name}</div>`);
+            });
+        }); 
+    });
+}
 
 function getApiRequest(endpoint){
     return $.get(`${baseURL}${endpoint}`);
-}
-
-function getRestaurants() {
-    
 }
 
 function getMenu(){
     $.get(`${baseUrl}`, function(data) {
 
     });
-}
-
-function getOtherRestaurantData(userId) {
-
 }
 
 function writeRestaurantData(userId) {
