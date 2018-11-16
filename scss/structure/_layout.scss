@@ -22,3 +22,21 @@
 .row {
   padding: 10px  10px 10px 10px
 }
+
+.preview{
+height: 100%;
+width: 100%;
+  &:before{
+    content: "";
+    background: url('/content/img/banner.jpg');
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    opacity: 0.2;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+  }
+  
+}

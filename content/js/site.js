@@ -56,10 +56,10 @@ function setUpRecommendations(){
         if(restaurantChoices.choice1 === null) {
             restaurantChoices.choice1 = value;
             this.classList.add('first');
-        }else{
+        }else if(value !== restaurantChoices.choice1){
             restaurantChoices.choice2 = value;
             writeRestaurantData(userId);
-            $(this.parentElement).hide();
+            $('#recommendations').hide();
             showWaiting();
             var otherUserRestaurants = database.ref('users/' + otherUserId + '/restaurants');
 
@@ -68,7 +68,6 @@ function setUpRecommendations(){
                     setUpWinningRestaurant();
                 } else{
                     $('#restaurant').hide();
-                    
                 }
             });
         }
@@ -85,7 +84,7 @@ function hideWaiting(){
 
 function setUpRestaurants(){
   restaurants.forEach(restaurant => {
-    $('#recommendations').append('      <div class="row">'+
+    $('#recommendations').append('<div class="row">'+
         '<div class="col-12">'+
             '<div class="card">'+
                 '<div class="container">'+
@@ -95,7 +94,7 @@ function setUpRestaurants(){
                     '<p>' + restaurant.Address + '</p>'+
                     '<p>' + restaurant.Postcode + '</p>'+
                     '<button type="button" class="btn' +
-    ' btn-success">Select</button>' +
+                    ' btn-success recommendation" data-value="' + restaurant.Id + '">Select</button>' +
                 '</div>'+
             '</div>'+
         '</div>'+
