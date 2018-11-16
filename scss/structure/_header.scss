@@ -1,6 +1,14 @@
 header {
-    height: 160px;
     width: 100%;
-    background-color: $black;
     color: $white;
+    height: 160px
+}
+
+
+img {
+    display: block;
+    float: left;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    height: 160px;
 }
