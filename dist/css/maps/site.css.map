@@ -1,1 +1,1 @@
-{"version":3,"sources":[],"names":[],"mappings":"","file":"../site.css","sourcesContent":[]}
+{"version":3,"sources":["pages/_index.scss"],"names":[],"mappings":"AAAC,AACG,UADO,CACP,SAAS,CACL,OAAO,CAAE,IAAI,CAFpB,AAIO,AAGH,UAPM,CACP,SAAS,AAGJ,UAAU,CACP,OAAO,CAAE,KAAK,CACjB","file":"../site.css","sourcesContent":[" .questions{\n    .question{\n        display: none;\n   \n        &#question1{\n            display: block;\n        }\n    }\n }\n "]}
