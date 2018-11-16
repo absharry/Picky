@@ -1,10 +1,9 @@
- .questions{
-    .question{
-        display: none;
-   
-        &#question1{
-            display: block;
-        }
+ #recommendations{
+     display: none;
+    button.recommendation{
+        padding: 30px;
+        width: 100%;
+        margin-bottom: 20px;
     }
  }
  

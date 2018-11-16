@@ -63,7 +63,7 @@ gulp.task('compile-html', function() {
 
   gulp.task('compile-js', function() {
     return gulp.src(paths.js)
-      .pipe(minify({noSource: true}))
+      .pipe(minify())
       .pipe(gulp.dest(paths.distJs))
       .pipe(connect.reload())
   });

@@ -2,22 +2,34 @@
 {% extends "layout.njk" %}
 
 {% block content %}
+<div class="col-12">
 
-<div class="questions">
-    <div class="question" id="question1">
-        <h2>Question 1</h2>
-        <button data-value="0">Answer 1</button>
-        <button data-value="1">Answer 2</button>
+    <div id="recommendations">
+        <button class="recommendation" id="recommendation1" data-value="1">
+            <h2>Recommendation 1</h2>
+        </button>
+        <button class="recommendation" id="recommendation2" data-value="2">
+            <h2>Recommendation 2</h2>
+        </button>
+        <button class="recommendation" id="recommendation3" data-value="3">
+            <h2>Recommendation 3</h2>
+        </button>
     </div>
-    <div class="question" id="question2">
-        <h2>Question 2</h2>
-        <button data-value="2">Answer 1</button>
-        <button data-value="4">Answer 2</button>
+
+    <div id="restaurant">
+        <p>Restaurant</p>
     </div>
-    <div class="question" id="question3">
-        <h2>Question 3</h2>
-        <button data-value="8">Answer 1</button>
-        <button data-value="16">Answer 2</button>
+
+    <div id="restaurant-waiting">
+        <p>Waiting</p>
+    </div>
+
+    <div id="menu-choice">
+
+    </div>
+
+    <div id="menu-success">
+
     </div>
 </div>
 
