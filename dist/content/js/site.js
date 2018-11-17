@@ -122,7 +122,7 @@ function setUpRestaurants(){
                     '<div class="col-6 right">'+
                         '<div class="row right">'+
                             '<button type="button" class="btn' +
-            ' btn-success">Select</button>' +
+            ' btn-success recommendation" data-value="' + restaurant.Id + '">Select</button>' +
                          '</div>'+
                      '</div>'+
                 '</div>'+
