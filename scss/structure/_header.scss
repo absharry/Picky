@@ -1,11 +1,17 @@
-.header {
-    text-align: center;
-    color: $white;
+.header-row{
+    background-color: white;
+    position: relative;
+    border-bottom: 1px solid grey;
+    
+    .header {
+        text-align: center;
+        color: $white;
 
-    img {
-        display: inline;
-        padding-bottom: 20px;
-        padding-top: 10px;
-        height: 60px;
+        img {
+            display: inline;
+            padding-bottom: 20px;
+            padding-top: 10px;
+            height: 60px;
+        }
     }
 }
