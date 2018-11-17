@@ -1,10 +1,11 @@
  #recommendations{
-     display: none;
+     display: inline;
     button.recommendation{
         padding: 30px;
         width: 100%;
         margin-bottom: 20px;
     }
+
  }
 
  #set-user-1{
@@ -32,4 +33,26 @@
  #menu-success{
      display: none;
  }
- 
+
+ .people {
+    display: block;
+    text-align: center;
+
+    img {
+        display: inline;
+        padding-bottom: 20px;
+        height: 120px;
+    }
+ }
+
+ .col-12 {
+    display: inline-block;
+ }
+
+ .left {
+    float: left;
+ }
+
+ .right {
+    float: right;
+ }

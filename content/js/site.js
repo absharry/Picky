@@ -84,18 +84,48 @@ function hideWaiting(){
 }
 
 function setUpRestaurants(){
+    $('#recommendations').append(
+        '<div class="people container">'+
+            '<img src="/content/img/people.png" alt="People">'+
+            '<p>Your results</p>'+
+            '<h2>Pick <b>Two</b> of the three options below</h2>')
+        '</div>'+
   restaurants.forEach(restaurant => {
-    $('#recommendations').append('      <div class="row">'+
+    $('#recommendations').append(
+      '<div class="row">'+
         '<div class="col-12">'+
             '<div class="card">'+
                 '<div class="container">'+
-                    '<h4><b>' + restaurant.Name + '</b></h4>'+
-                    '<p>' + restaurant.AverageRating + '</p>'+
-                    '<p>' + restaurant.FoodType + '</p>'+
-                    '<p>' + restaurant.Address + '</p>'+
-                    '<p>' + restaurant.Postcode + '</p>'+
-                    '<button type="button" class="btn' +
-    ' btn-success">Select</button>' +
+                    '<div class="col-6 left">'+
+                        '<div class="row">'+
+                            '<img src="'+ restaurant.Image +'" />'+
+                        '</div>'+
+                    '</div>'+
+                    '<div class="col-6 right">'+
+                        '<div class="row">'+
+                            '<h4><b>' + restaurant.Name + '</b></h4>'+
+                        '</div>'+
+                        '<div class="row">'+
+                            '<p>' + restaurant.AverageRating + '</p>'+
+                        '</div>'+
+                        '<div class="row">'+
+                            '<p>' + restaurant.FoodType + '</p>'+
+                        '</div>'+
+                    '</div>'+
+                    '<div class="col-6 left">'+
+                        '<div class="row">'+
+                            '<p>' + restaurant.Address + '</p>'+
+                        '</div>'+
+                        '<div class="row">'+
+                            '<p>' + restaurant.Postcode + '</p>'+
+                        '</div>'+
+                    '</div>'+
+                    '<div class="col-6 right">'+
+                        '<div class="row right">'+
+                            '<button type="button" class="btn' +
+            ' btn-success">Select</button>' +
+                         '</div>'+
+                     '</div>'+
                 '</div>'+
             '</div>'+
         '</div>'+
