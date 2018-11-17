@@ -1,3 +1,7 @@
+ .content{
+     margin-top: 60px;
+ }
+ 
  #recommendations{
      display: none;
  }
@@ -22,6 +26,11 @@
 
             h3{
                 font-size: 1.2em;
+            }
+
+            .productInfo{
+                display: block;
+                margin-top: 5px;
             }
 
             img{

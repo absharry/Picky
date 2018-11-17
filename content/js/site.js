@@ -164,7 +164,7 @@ function getMenu(chosenRestaurant){
         var products = '';
 
         data.Products.forEach(product => {
-            products += `<div class='product ${product.IsVegetarian ? 'vegetarian' : ''}' id='product${product.Id}'><img src='/content/img/remove.png'><h3>${product.Item + (product.Quantity > 1 ? ` x${product.Quantity}` : '')}</h3> <img src="/content/img/swap.png" class="swap"> <p class='price'>&pound;${product.Price}</p></div>`;
+            products += `<div class='product ${product.IsVegetarian ? 'vegetarian' : ''}' id='product${product.Id}'><img src='/content/img/remove.png'><h3>${product.Item + (product.Quantity > 1 ? ` x${product.Quantity}` : '')}</h3> <img src="/content/img/swap.png" class="swap"> <p class='price'>&pound;${product.Price}</p> <p class="productInfo"> ${product.Info}</p></div>`;
         });
 
         $('#restaurant').append('<div class="row">'+
