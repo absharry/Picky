@@ -84,47 +84,42 @@ function hideWaiting(){
 
 function setUpRestaurants(){
     $('#recommendations').append(
-        '<div class="people container">'+
+        '<div class="people container-fluid">'+
             '<img src="/content/img/people.png" alt="People">'+
             '<p>Your results</p>'+
-            '<h2>Pick <b>Two</b> of the three options below</h2>')
+            '<h2>Pick <b>two</b> of the three options below</h2>')
         '</div>'+
   restaurants.forEach(restaurant => {
     $('#recommendations').append(
       '<div class="row">'+
         '<div class="col-12">'+
             '<div class="card">'+
-                '<div class="container">'+
-                    '<div class="col-6 left">'+
-                        '<div class="row">'+
-                            '<img src="'+ restaurant.Image +'" />'+
+                '<div class="container-fluid">'+
+                    '<div class="row">' +
+                        '<div class="col-3">'+
+                            '<img class="img-fluid" src="'+ restaurant.Image +'" />'+
                         '</div>'+
-                    '</div>'+
-                    '<div class="col-6 right">'+
-                        '<div class="row">'+
-                            '<h4><b>' + restaurant.Name + '</b></h4>'+
+                        '<div class="col-6 restaurantInfo">'+
+                                '<h4><b>' + restaurant.Name + '</b></h4>'+
+                                '<p>' + restaurant.AverageRating + '</p>'+
+                                '<p>' + restaurant.FoodType + '</p>'+
                         '</div>'+
-                        '<div class="row">'+
-                            '<p>' + restaurant.AverageRating + '</p>'+
+                        '<div class="col-3">' +
+                            '<img src="/content/img/justeat.png" class="right source" />'+
+                        '</div>' +
+                    '</div>' +
+                    '<div class="row">' +
+                        '<div class="col-6">'+
+                                '<p>' + restaurant.Address + ' ' + restaurant.Postcode + '</p>'+
+                                '<p>' + restaurant.DeliveryDetails + '</p>' +
                         '</div>'+
-                        '<div class="row">'+
-                            '<p>' + restaurant.FoodType + '</p>'+
+                        '<div class="col-6">'+
+                            '<div class="row right">'+
+                                '<button type="button" class="btn' +
+                ' btn-success recommendation" data-value="' + restaurant.Id + '">Select</button>' +
+                            '</div>'+
                         '</div>'+
-                    '</div>'+
-                    '<div class="col-6 left">'+
-                        '<div class="row">'+
-                            '<p>' + restaurant.Address + '</p>'+
-                        '</div>'+
-                        '<div class="row">'+
-                            '<p>' + restaurant.Postcode + '</p>'+
-                        '</div>'+
-                    '</div>'+
-                    '<div class="col-6 right">'+
-                        '<div class="row right">'+
-                            '<button type="button" class="btn' +
-            ' btn-success recommendation" data-value="' + restaurant.Id + '">Select</button>' +
-                         '</div>'+
-                     '</div>'+
+                    '</div>' +
                 '</div>'+
             '</div>'+
         '</div>'+
@@ -170,17 +165,28 @@ function getMenu(chosenRestaurant){
         $('#restaurant').append('<div class="row">'+
         '<div class="col-12">'+
             '<div class="card">'+
-                '<div class="container">'+
+                '<div class="container-fluid">'+
                     '<div class="row">' +
-                        '<div class="col-12">' +
-                            '<h4><b>' + data.Name + '</b></h4>'+
-                            '<p>' + data.AverageRating + '</p>'+
-                            '<p>' + data.FoodType + '</p>'+
-                            '<p>' + data.Address + ' '+ data.Postcode + '</p>'+
+                        '<div class="col-3">'+
+                            '<img class="img-fluid" src="'+ data.Image +'" />'+
+                        '</div>'+
+                        '<div class="col-6 restaurantInfo">'+
+                                '<h4><b>' + data.Name + '</b></h4>'+
+                                '<p>' + data.AverageRating + '</p>'+
+                                '<p>' + data.FoodType + '</p>'+
+                        '</div>'+
+                        '<div class="col-3">' +
+                            '<img src="/content/img/justeat.png" class="right source" />'+
                         '</div>' +
-                    '</div>'+
+                    '</div>' +
                     '<div class="row">' +
-                        '<div class="col-12"' +
+                        '<div class="col-8">'+
+                                '<p>' + data.Address + ' ' + data.Postcode + '</p>'+
+                                '<p>' + data.DeliveryDetails + '</p>' +
+                        '</div>'+
+                    '</div>' +
+                    '<div class="row">' +
+                        '<div class="col-12 addPadding"' +
                             '<p><strong>Picked for you</strong></p>' +
                             '<p>If you don\'t like an item swap it for a new one</p>' +
                             '<div class="products">'+
