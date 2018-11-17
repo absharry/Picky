@@ -134,10 +134,38 @@ function getMenu(chosenRestaurant){
         var products = '';
 
         data.Products.forEach(product => {
-            products += `<div class='product ${product.IsVegetarian ? 'vegetarian' : ''}' id='product${product.id}'><h3>${product.Item}</h3> <p class='price'>&pound;${product.Price}</p> <p class='quantity'>${product.Quantity}</p></div>`;
+            products += `<div class='product ${product.IsVegetarian ? 'vegetarian' : ''}' id='product${product.Id}'><img src='/content/img/remove.png'><h3>${product.Item + (product.Quantity > 1 ? ` x${product.Quantity}` : '')}</h3> <img src="/content/img/swap.png" class="swap"> <p class='price'>&pound;${product.Price}</p></div>`;
         });
 
-        $('#restaurant').append(`<div class='chosen-menu'><h1>${data.Name}</h1> <div class='products'>${products}</div><div class='total'>&pound;${data.TotalCost}</div></div><button class='btn btn-primary'>Checkout</button>`);
+        $('#restaurant').append('<div class="row">'+
+        '<div class="col-12">'+
+            '<div class="card">'+
+                '<div class="container">'+
+                    '<div class="row">' +
+                        '<div class="col-12">' +
+                            '<h4><b>' + data.Name + '</b></h4>'+
+                            '<p>' + data.AverageRating + '</p>'+
+                            '<p>' + data.FoodType + '</p>'+
+                            '<p>' + data.Address + ' '+ data.Postcode + '</p>'+
+                        '</div>' +
+                    '</div>'+
+                    '<div class="row">' +
+                        '<div class="col-12"' +
+                            '<p><strong>Picked for you</strong></p>' +
+                            '<p>If you don\'t like an item swap it for a new one</p>' +
+                            '<div class="products">'+
+                            products +
+                            '</div>' +
+                            '<div class="total-container"><p>Total</p><p class="price">&pound;' + data.TotalCost + '</p></div>' +
+                        '</div>' +
+                    '</div>' +
+                '</div>' +
+            '</div>'+
+            '<div class="checkout">' +
+                '<button class="btn btn-primary">Checkout</button>' +
+            '</div>' +
+        '</div>'+
+    '</div>');
     });
 }
 
