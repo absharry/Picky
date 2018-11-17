@@ -121,3 +121,13 @@
  .right {
     float: right;
  }
+
+#applepay{
+    display: none;
+    width: 100%;
+    position: absolute;
+    bottom: -100%;
+    left: 0;
+    right: 0;
+}
+

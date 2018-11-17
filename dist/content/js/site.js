@@ -192,10 +192,17 @@ function getMenu(chosenRestaurant){
                 '</div>' +
             '</div>'+
             '<div class="checkout">' +
-                '<button class="btn btn-primary">Checkout</button>' +
+                '<button id="checkout" class="btn btn-primary">Checkout</button>' +
             '</div>' +
         '</div>'+
     '</div>');
+
+        $('#checkout').click(function(){
+            $('#applepay').show();
+            $('#applepay').animate({
+                bottom: 0
+            }, 400);
+        })
     });
 }
 
